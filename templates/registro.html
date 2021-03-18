@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+
+</head>
+<body>
+
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="mb-4" src="{% static '/logo/logo2.svg' %}" alt="" width="112" height="97">
+      <h2>Sistema de Turnos: Registro del paciente.</h2>
+      <p class="lead">Ingrese sus datos.</p>
+    </div>
+
+    <div class="row center">
+      
+      <div class="col-md-12 col-md-8">
+        <h4 class="mb-3">Complete sus datos para el registro al sistema.</h4>
+        <form method = 'POST'>
+         {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-sm-6">
+               <label for="firstName" class="form-label">Nombre</label> 
+                <input type="text" class="form-control form-control" name = "nombre" id="nombe" placeholder="Ingrese su nombre" value="" required> 
+              <div class="invalid-feedback">
+                 Nombre es requerido.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input type="text" class="form-control" name = "apellido" id="apellido" placeholder="Ingrese su apellido" value="" required >
+              <div class="invalid-feedback">
+                es requerido.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Numero de documento</label>
+              <input type="text" class="form-control" name = "dni" id="dni" placeholder="ingrese DNI/LC/LE" value="" required >
+              <div class="invalid-feedback">
+                es requerido.
+              </div>
+            </div>
+
+             <div class="col-sm-6">
+              <label for="lastName" class="form-label"> Fecha de Nacimiento</label>
+              <input type="date" class="form-control" name = "fecha" id="fecha" placeholder="dd/mm/aaaa" value="" required >
+              <div class="invalid-feedback">
+                Valid last name es requerido.
+              </div>
+            </div>
+            
+            <div class="col-sm-6">
+              <label for="tel" class="form-label">Numero de telefono</label>
+              <input type="tel" class="form-control" name = "tel" id="te" placeholder="ingrese telefono" value="" required >
+              <div class="invalid-feedback">
+                El telefono es requerido
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <label for="os" class="form-label">Obra social <!-- <span class="text-muted">(Optional)</span> --> </label>
+              <input type="text" class="form-control" name = "os" id="os" placeholder="complete su obra social">
+             <!-- <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>  -->
+            </div>
+            
+            <hr class="my-4">
+            <hr class="my-4">
+
+            <div class="col-12">
+              <label for="email" class="form-label">Correo Electronico <!-- <span class="text-muted">(Optional)</span> --> </label>
+              <input type="email" class="form-control" name = "email" id="email" placeholder="ejemplo@correo.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <div class="input-group has-validation">
+                   {{form.username}} 
+                  <div class="invalid-feedback">
+                    El nombre de usuario es requerido.
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="password1" class="form-label">Contraseña</label>
+              <div class="input-group has-validation">
+                   {{form.password1}} 
+                  <div class="invalid-feedback">
+                    La contraseña es requerida.
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="password1" class="form-label"> Re Ingrese Contraseña</label>
+              <div class="input-group has-validation">
+                   {{form.password2}} 
+                  <div class="invalid-feedback">
+                    La contraseña es requerida.
+                  </div>
+              </div>
+            </div>
+
+            <!-- div class="col-md-12">
+              <label for="address" class="form-label">Re Ingrese Contraseña</label>
+              <div type="password" class="form-control" id="password2" placeholder="repita su contraseña" required> </div>
+              <div class="invalid-feedback">
+                Por favor ingrese contraseña
+              </div>
+            </div> -->
+            <br> <br> <br> <br>
+            
+            <div class="col-12"> <button  class="w-100 btn btn-primary btn-lg" type="submit">Registar!</button> </div>
+            <br><br><br>
+            <div class="col-12"><a type="button" class="w-100 btn btn-primary btn-lg" href="{% url 'login'%}">Cancelar</a></div>
+            
+            <br> <br> <br> <br>
+        </form>
+        {{form.errors}}
+        
+    
+</body>
+</html>

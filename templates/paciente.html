@@ -1,0 +1,182 @@
+{%  extends 'home.html' %}
+
+{%block paciente%}
+ 
+<hr>
+<div class="row ml-3">
+	<head>BUSQUEDA DE TURNOS: </head>
+</div>
+<br>
+
+{% if not request.user.is_staff %}
+	<div class="row">
+		<div class="col">
+			<div class="card card-body">
+
+				<form method="get">
+					
+					{{ miFiltro.form }}
+
+				<button class="btn btn-primary" type="submit">Filtrar</button>
+			</form>
+
+			</div>
+		</div>
+{% endif %}
+
+{% if request.user.is_staff %}
+	<div class="row">
+		<div class="col">
+			<div class="card card-body">
+
+				<form method="get">
+					
+					{{ miFiltroadmin.form }}
+
+				<button class="btn btn-primary" type="submit">Filtrar</button>
+			</form>
+
+			</div>
+		</div>
+{% endif %}
+</div>
+
+<hr>
+
+{% if not request.user.is_staff %}
+	<div class="row">
+		<div class="col-md-4  ml-3">
+			<h5>MIS DATOS PERSONALES:</h5>
+			<hr>
+			<div class="card card-body"> 
+				<table class="table table-sm">
+					<tr>
+						<th>Nombre: {{paciente.nombre}}</th>		
+					</tr>
+					<tr>
+						<th>Apellido: {{paciente.apellido}}</th>				
+					</tr>
+					<tr>
+						<th>DNI: {{paciente.dni}} </th>				
+					</tr>
+					<tr>
+						<th>Telefono: {{paciente.tel}} </th>				
+					</tr>
+					<tr>
+						<th>Obra social: {{paciente.os}}</th>				
+					</tr>
+					<tr>
+						<th>EMAIL: {{paciente.email}}</th>				
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-7">
+			<h5>TURNOS RESERVADOS</h5>
+
+			
+			<div class="card card-body">
+				<table class="table table-sm">
+					<tr>
+						<th>FECHA</th>
+						<th>HORA</th>
+						<th>SERVICIO</th>
+						<th>PRACTICA</th>
+						<th>ACCIONES</th>
+						<th>ACCIONES</th>
+					</tr>
+					
+					{% for turno in turnos %} 
+					<tr>
+						<td><p>{{ turno.fecha }} </p></td>
+						<td><p>{{ turno.hora }} </p></td>
+						<td><p>{{ turno.servicio }}</p></td>
+						<td><p>{{ turno.practica }}</p></td>
+						<td><a class="btn btn-sm btn-info" href="{%url 'modifServicio' turno.id %}">Modificar</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{%url 'cancelarTurno' turno.id %}">Eliminar</a></td>
+
+					</tr>
+					{% endfor %} 
+
+			
+				</table>
+			</div>
+		</div>
+	<div class="col-sm-1">
+	</div>
+
+	</div>
+{% endif %}
+
+{% if request.user.is_staff %}
+	<div class="row">
+		<div class="col-md-4  ml-3">
+			<h5>DATOS PERSONALES DEL ADMINISTRADOR:</h5>
+			<hr>
+			<div class="card card-body"> 
+				<table class="table table-sm">
+					<tr>
+						<th>Nombre: {{paciente.nombre}}</th>		
+					</tr>
+					<tr>
+						<th>Apellido: {{paciente.apellido}}</th>				
+					</tr>
+					<tr>
+						<th>DNI: {{paciente.dni}} </th>				
+					</tr>
+					<tr>
+						<th>Telefono: {{paciente.tel}} </th>				
+					</tr>
+					<tr>
+						<th>Obra social: {{paciente.os}}</th>				
+					</tr>
+					<tr>
+						<th>EMAIL: {{paciente.email}}</th>				
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<div class="col-md-7">
+			<h5>TURNOS RESERVADOS</h5>
+			
+			<div class="card card-body">
+				<table class="table table-sm">
+					<tr>
+						<th>PÁCIENTE</th>
+						<th>FECHA</th>
+						<th>HORA</th>
+						<th>ESTADO</th>
+						<th>SERVICIO</th>
+						<th>PRACTICA</th>
+						<th>ACCIONES</th>
+						<th>ACCIONES</th>
+					</tr>
+					
+					{% for turno in turnosadmin %} 
+					<tr>
+						<td><p>{{ turno.paciente.nombre }} {{ turno.paciente.apellido }}</p></td>
+						<td><p>{{ turno.fecha }} </p></td>
+						<td><p>{{ turno.hora }} </p></td>
+						<td><p>{{ turno.estado }} </p></td>
+						<td><p>{{ turno.servicio }}</p></td>
+						<td><p>{{ turno.practica }}</p></td>
+						{% if turno.estado == 'Reservado' %}
+						<td><a class="btn btn-sm btn-info" href="{%url 'modifServicio' turno.id %}">Modificar</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{%url 'cancelarTurno' turno.id %}">Eliminar</a></td>
+						{% endif %}
+
+					</tr>
+					{% endfor %} 
+			
+				</table>
+			</div>
+		</div>
+	<div class="col-sm-1">
+	</div>
+
+	</div>
+{% endif %}
+
+{%endblock paciente%}

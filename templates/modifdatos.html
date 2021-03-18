@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+    <title>APLICACION DE TURNOS</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+<br>
+<br>
+<div class="col-md-6">
+  <form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Nombre</label>
+      <input class="form-control" type="text" placeholder="Default input">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Apellido</label>
+      <input class="form-control" type="text" placeholder="Default input">
+    </div>
+    <div class="form-group">
+      <table>
+        <tr>
+          <td><label for="exampleFormControlInput1">DNI</label></td>
+          <td><label for="exampleFormControlInput1">TELEFONO</label></td>
+          <td><label for="exampleFormControlInput1">FECHA DE NACIMIENTO</label></td>
+        </tr>
+        <tr>
+          <td><input class="form-control" type="text" placeholder="Default input"></td>
+          <td><input class="form-control" type="text" placeholder="Default input"></td>
+          <td><input class="form-control" type="text" placeholder="Default input"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">OBRA SOCIAL</label>
+      <input class="form-control" type="text" placeholder="Default input">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+  </form>
+
+  <a class="btn btn-warning" href="">Cancel</a>
+
+  <input class="btn btn-danger" type="submit" name="Confirm">
+
+</div>
+
+
+</body>
+</html>
+

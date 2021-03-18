@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>APLICACION DE TURNOS</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+<br>
+<br>
+  <form method="POST">
+    {% csrf_token %}
+    <div class="form-group col-md-4">
+      <label for="exampleFormControlSelect1">Elija un servicio..</label>
+      
+      <select class="form-control"  name = "servicio" id="exampleFormControlSelect1">
+        <option selected>Elegir servicio</option>
+           
+        {% for servicio in servicios%}
+        <option name="servicio">{{servicio}}</option> 
+        {%endfor %} 
+      </select>    
+    </div>
+    {% for message in messages %}
+    <p class ="text-danger" id="messages">{{message}}</p>
+    {% endfor %}
+    <a type="button" class="btn btn-primary ml-4" href="{% url 'paciente'%}">Cancelar</a>
+    <button  type="submit" class="btn btn-primary ml-4" >Continuar</button>
+  
+  </form>
+    
+</body>
+</html>
+<!-- 
+
+ -->

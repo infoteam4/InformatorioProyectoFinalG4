@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>APLICACION DE TURNOS</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+<br>
+<br>
+
+    <div class="d-flex justify-content-center">
+        <h1>Su turno ha sido confirmado:</h1>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>Servicio: {{turno.servicio}}</h3>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>Practica: {{turno.practica}}</h3>
+    </div>
+    <div class="d-flex justify-content-center">
+        <h3>Para el dia: {{turno.fecha}} a las {{turno.hora}}hs</h3>
+    </div>
+    
+
+    <div class="d-flex justify-content-center">
+        <a type="button" class="btn btn-primary ml-4" href="{% url 'paciente'%}">Ir al inicio</a>
+    </div>
+
+</body>
+</html>

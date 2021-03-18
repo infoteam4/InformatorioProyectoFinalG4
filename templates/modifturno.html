@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>APLICACION DE TURNOS</title>
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+<br>
+<br>
+  
+<form method="POST">
+  {% csrf_token %} 
+    <div class="form-group col-md-5 ml-3">
+      <p class="lead">Se enumeran las practicas del servicio elegido: {{servicio.nombre}}  {{servicio.id}} | {{turno_reservado}} </p>
+      <label for="exampleFormControlSelect1">Elija el estudio a realizarse...</label>
+      <select class="form-control"  name = "practica" id="exampleFormControlSelect1">
+        {% for practica in practicas%}
+        <option name="practica">{{practica}}</option> 
+        {%endfor %} 
+      </select>    
+    </div>
+    <div class="form-group col-md-5 ml-3">
+      <label for="exampleFormControlSelect2">Horarios disponibles...</label>
+      <select multiple class="form-control" name="turno" id="exampleFormControlSelect2">
+        {% for turno in turnos%}
+        <option name="turno">{{turno}} | {{turno.id}}</option> 
+        {%endfor %} 
+      </select>
+    </div>
+    <div class="form-group col-md-5 ml-3">
+        <a type="button" class="btn btn-primary ml-4" href = "{% url 'paciente' %}">Cancelar</a>
+        <button type="submit" class="btn btn-primary ml-4">Modificar turno</button>        
+    </div>
+  </form>
+</body>
+</html>
